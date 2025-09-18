@@ -28,7 +28,7 @@ class TARNetServer:
             'total_hosts': 0,
             'total_clients': 0,
             'messages_processed': 0,
-            'server_start_time': datetime.now()
+            'server_start_time': datetime.now().isoformat()
         }
         
         logger.info(f"TARNet Server inicializado - {self.host}:{self.port}")

@@ -1,0 +1,14 @@
+# TARNet - Dependências do Projeto Completo
+
+# Dependências do Host Agent
+mss==9.0.1
+pillow==10.0.1
+pyautogui==0.9.54
+websockets==12.0
+
+# Dependências do Servidor WebSocket
+# websockets==12.0 (já incluído acima)
+
+# Dependências do Cliente Web (futuro)
+# flask==2.3.3
+# flask-socketio==5.3.6

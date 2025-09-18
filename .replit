@@ -16,15 +16,15 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "TARNet Host Agent"
+args = "TARNet Server"
 
 [[workflows.workflow]]
-name = "TARNet Host Agent"
+name = "TARNet Server"
 author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python host.py"
+args = "cd tarnet/server && python server.py"
 
 [workflows.workflow.metadata]
 outputType = "console"
@@ -32,3 +32,7 @@ outputType = "console"
 [[ports]]
 localPort = 5000
 externalPort = 80
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
