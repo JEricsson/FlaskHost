@@ -1,0 +1,14 @@
+# TARNet Host Agent - Requirements Atualizados para Python 3.13
+# Use este arquivo se estiver tendo problemas com o requirements.txt original
+
+# Captura de tela
+mss>=9.0.1
+
+# Processamento de imagem - versão mais nova compatível com Python 3.13
+pillow>=10.4.0
+
+# Controle de mouse e teclado - versão mais recente
+pyautogui>=0.9.54
+
+# WebSocket client - versão atual
+websockets>=12.0

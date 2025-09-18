@@ -1,0 +1,100 @@
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal> cd tarnet/host
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet\host> python .\host.py
+Traceback (most recent call last):
+  File "J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet\host\host.py", line 8, in <module>
+    from mss import mss
+ModuleNotFoundError: No module named 'mss'
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet\host> pip install -r tarnet/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tarnet/requirements.txt'
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet\host> cd..
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet> pip install -r tarnet/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tarnet/requirements.txt'
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal\tarnet> cd ..
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal> pip install -r tarnet/requirements.txt
+Collecting mss==9.0.1 (from -r tarnet/requirements.txt (line 4))
+  Using cached mss-9.0.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting pillow==10.0.1 (from -r tarnet/requirements.txt (line 5))
+  Using cached Pillow-10.0.1.tar.gz (50.5 MB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... error
+  error: subprocess-exited-with-error
+
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [21 lines of output]
+      Traceback (most recent call last):
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+          main()
+          ~~~~^^
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 143, in get_requires_for_build_wheel
+          return hook(config_settings)
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-qgl7ewqi\overlay\Lib\site-packages\setuptools\build_meta.py", line 331, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-qgl7ewqi\overlay\Lib\site-packages\setuptools\build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+          ~~~~~~~~~~~~~~^^
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-qgl7ewqi\overlay\Lib\site-packages\setuptools\build_meta.py", line 317, in run_setup
+          exec(code, locals())
+          ~~~~^^^^^^^^^^^^^^^^
+        File "<string>", line 30, in <module>
+        File "<string>", line 27, in get_version
+      KeyError: '__version__'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× Getting requirements to build wheel did not run successfully.
+│ exit code: 1
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal> pip install -r tarnet/host/requirements.txt
+Collecting mss==9.0.1 (from -r tarnet/host/requirements.txt (line 1))
+  Using cached mss-9.0.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting pillow==10.0.1 (from -r tarnet/host/requirements.txt (line 2))
+  Using cached Pillow-10.0.1.tar.gz (50.5 MB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... error
+  error: subprocess-exited-with-error
+
+  × Getting requirements to build wheel did not run successfully.
+  │ exit code: 1
+  ╰─> [21 lines of output]
+      Traceback (most recent call last):
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 389, in <module>
+          main()
+          ~~~~^^
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 373, in main
+          json_out["return_val"] = hook(**hook_input["kwargs"])
+                                   ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\Jorge\AppData\Local\Programs\Python\Python313\Lib\site-packages\pip\_vendor\pyproject_hooks\_in_process\_in_process.py", line 143, in get_requires_for_build_wheel
+          return hook(config_settings)
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-ww5kjxn6\overlay\Lib\site-packages\setuptools\build_meta.py", line 331, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings, requirements=[])
+                 ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-ww5kjxn6\overlay\Lib\site-packages\setuptools\build_meta.py", line 301, in _get_build_requires
+          self.run_setup()
+          ~~~~~~~~~~~~~~^^
+        File "C:\Users\Jorge\AppData\Local\Temp\pip-build-env-ww5kjxn6\overlay\Lib\site-packages\setuptools\build_meta.py", line 317, in run_setup
+          exec(code, locals())
+          ~~~~^^^^^^^^^^^^^^^^
+        File "<string>", line 30, in <module>
+        File "<string>", line 27, in get_version
+      KeyError: '__version__'
+      [end of output]
+
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× Getting requirements to build wheel did not run successfully.
+│ exit code: 1
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
+PS J:\Projetos\Replit Agent 3\FlaskHostFinal> pip install -r tarnet/server/requirements.txt
+Requirement already satisfied: websockets==12.0 in c:\users\jorge\appdata\local\programs\python\python313\lib\site-packages (from -r tarnet/server/requirements.txt (line 1)) (12.0)
