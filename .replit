@@ -1,10 +1,10 @@
-modules = ["nodejs-20", "python-3.12", "web"]
+modules = ["nodejs-20", "web", "python-3.11"]
 [agent]
 expertMode = true
 
 [nix]
 channel = "stable-25_05"
-packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "scrot", "tcl", "tk", "xvfb-run", "zlib", "xorg.libX11", "xorg.libXext", "xorg.libXtst"]
+packages = ["freetype", "lcms2", "libimagequant", "libjpeg", "libtiff", "libwebp", "libxcrypt", "openjpeg", "scrot", "tcl", "tk", "xorg.libX11", "xorg.libXext", "xorg.libXtst", "xvfb-run", "zlib"]
 
 [workflows]
 runButton = "Project"
