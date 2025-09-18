@@ -49,6 +49,13 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Configuração do cliente -->
+    <script>
+        window.TARNET_CONFIG = {
+            websocketUrl: {{ websocket_url|tojson if websocket_url else '"ws://localhost:8000"'|safe }}
+        };
+    </script>
+    
     <!-- JavaScript customizado -->
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
     

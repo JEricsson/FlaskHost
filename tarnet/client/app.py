@@ -9,16 +9,27 @@ app.secret_key = os.environ.get('SESSION_SECRET', 'tarnet-dev-secret-key')
 app.config['HOST'] = '0.0.0.0'
 app.config['PORT'] = 5000
 
+def get_websocket_url():
+    """Determina a URL correta do WebSocket baseado no ambiente"""
+    # Verifica se está rodando no Replit
+    repl_domain = os.environ.get('REPLIT_DEV_DOMAIN')
+    if repl_domain:
+        # No Replit, usa wss:// com a porta 8000 mapeada
+        return f"wss://{repl_domain}:8000"
+    else:
+        # Ambiente local - usa ws://localhost:8000
+        return "ws://localhost:8000"
+
 @app.route('/')
 def index():
     """Página principal do cliente web"""
-    return render_template('index.html')
+    return render_template('index.html', websocket_url=get_websocket_url())
 
 @app.route('/control/<host_id>')
 def control_host(host_id):
     """Página de controle para um host específico"""
     client_id = str(uuid.uuid4())
-    return render_template('control.html', host_id=host_id, client_id=client_id)
+    return render_template('control.html', host_id=host_id, client_id=client_id, websocket_url=get_websocket_url())
 
 @app.route('/api/hosts')
 def get_hosts():

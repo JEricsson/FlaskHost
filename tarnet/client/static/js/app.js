@@ -2,8 +2,11 @@
 
 class TARNetApp {
     constructor() {
+        // Usa a URL do WebSocket fornecida pelo servidor ou fallback para localhost
+        const defaultServerUrl = window.TARNET_CONFIG?.websocketUrl || 'ws://localhost:8000';
+        
         this.config = {
-            serverUrl: localStorage.getItem('tarnet_server_url') || 'ws://localhost:8000',
+            serverUrl: localStorage.getItem('tarnet_server_url') || defaultServerUrl,
             reconnectInterval: parseInt(localStorage.getItem('tarnet_reconnect_interval')) || 5000,
             maxReconnectAttempts: 10
         };
