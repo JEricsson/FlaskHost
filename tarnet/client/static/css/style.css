@@ -1,0 +1,257 @@
+/* TARNet Cliente Web - Estilos Customizados */
+
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+}
+
+/* Layout geral */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.card-header {
+    background-color: var(--light-color);
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 600;
+}
+
+/* Host cards */
+.host-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.host-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.host-status {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.host-status.online {
+    background-color: var(--success-color);
+    box-shadow: 0 0 0 2px rgba(25, 135, 84, 0.2);
+}
+
+.host-status.offline {
+    background-color: var(--secondary-color);
+}
+
+/* Controle remoto */
+#screen-container {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#remote-screen {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #000;
+}
+
+#loading-overlay {
+    pointer-events: none;
+}
+
+/* Controles */
+.control-btn {
+    margin: 2px;
+    min-width: 60px;
+}
+
+.quality-indicator {
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* Estatísticas */
+.stats-item {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--light-color);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.stats-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stats-label {
+    font-size: 0.8em;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+/* Status de conexão */
+.connection-status {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.connection-status.connected {
+    background-color: #d1edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.connection-status.connecting {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.connection-status.disconnected {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    .card-body {
+        padding: 15px;
+    }
+    
+    #remote-screen {
+        width: 100% !important;
+        height: auto !important;
+    }
+    
+    .control-panel {
+        order: 2;
+        margin-top: 20px;
+    }
+    
+    .screen-panel {
+        order: 1;
+    }
+}
+
+/* Animações */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Fullscreen */
+.fullscreen-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-container canvas {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+/* Loading spinner customizado */
+.custom-spinner {
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast customizações */
+.toast {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Cursor customizado */
+.remote-cursor {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease-out;
+}
+
+/* Modo escuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .card {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .card-header {
+        background-color: #3d3d3d;
+        border-bottom-color: #4d4d4d;
+    }
+}

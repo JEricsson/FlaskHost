@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}TARNet - Controlando {{ host_id[:8] }}...{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Painel de controle -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h6><i class="fas fa-gamepad"></i> Controle</h6>
+            </div>
+            <div class="card-body">
+                <!-- Status da conexão -->
+                <div id="connection-status" class="alert alert-warning alert-sm" role="alert">
+                    <i class="fas fa-spinner fa-spin"></i> Conectando...
+                </div>
+                
+                <!-- Informações do host -->
+                <div class="mb-3">
+                    <small class="text-muted">Host ID:</small>
+                    <div class="font-monospace small">{{ host_id[:16] }}...</div>
+                </div>
+                
+                <div class="mb-3">
+                    <small class="text-muted">Cliente ID:</small>
+                    <div class="font-monospace small">{{ client_id[:16] }}...</div>
+                </div>
+                
+                <!-- Controles de qualidade -->
+                <div class="mb-3">
+                    <label for="qualityRange" class="form-label small">Qualidade da Imagem</label>
+                    <input type="range" class="form-range" id="qualityRange" 
+                           min="10" max="100" value="75" step="5">
+                    <small class="text-muted">75%</small>
+                </div>
+                
+                <!-- Estatísticas -->
+                <div class="border-top pt-3">
+                    <h6 class="text-muted">Estatísticas</h6>
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <div class="small text-muted">FPS</div>
+                            <div id="fps-counter" class="fw-bold">0</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="small text-muted">Latência</div>
+                            <div id="latency-counter" class="fw-bold">0ms</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Ações -->
+                <div class="border-top pt-3">
+                    <button class="btn btn-danger btn-sm w-100" onclick="disconnect()">
+                        <i class="fas fa-sign-out-alt"></i> Desconectar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Atalhos de teclado -->
+        <div class="card mt-3">
+            <div class="card-header">
+                <h6><i class="fas fa-keyboard"></i> Atalhos</h6>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="sendKey('ctrl+c')">
+                        Ctrl+C
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="sendKey('ctrl+v')">
+                        Ctrl+V
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="sendKey('alt+tab')">
+                        Alt+Tab
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm" onclick="sendKey('win')">
+                        Windows
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Área de exibição da tela -->
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h6><i class="fas fa-desktop"></i> Tela Remota</h6>
+                <div>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="toggleFullscreen()">
+                        <i class="fas fa-expand"></i> Tela Cheia
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="fitToScreen()">
+                        <i class="fas fa-compress"></i> Ajustar
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card-body p-0">
+                <div id="screen-container" class="position-relative bg-dark">
+                    <!-- Canvas para exibir a tela remota -->
+                    <canvas id="remote-screen" 
+                            style="max-width: 100%; height: auto; cursor: crosshair;">
+                        Seu navegador não suporta canvas HTML5.
+                    </canvas>
+                    
+                    <!-- Overlay de loading -->
+                    <div id="loading-overlay" class="position-absolute top-50 start-50 translate-middle text-white">
+                        <div class="text-center">
+                            <i class="fas fa-spinner fa-spin fa-2x"></i>
+                            <p class="mt-2">Aguardando frames da tela...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Toast para notificações -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="notification-toast" class="toast" role="alert">
+        <div class="toast-header">
+            <i class="fas fa-info-circle text-primary"></i>
+            <strong class="me-auto ms-2">TARNet</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body" id="toast-message">
+            Mensagem
+        </div>
+    </div>
+</div>
+
+<!-- Dados para JavaScript -->
+<script>
+    window.TARNet = {
+        hostId: '{{ host_id }}',
+        clientId: '{{ client_id }}',
+        serverUrl: localStorage.getItem('tarnet_server_url') || 'ws://localhost:8000'
+    };
+</script>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/control.js') }}"></script>
+{% endblock %}
