@@ -22,12 +22,13 @@ args = "TARNet Server"
 name = "TARNet Server"
 author = "agent"
 
+[workflows.workflow.metadata]
+outputType = "webview"
+
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd tarnet/server && python server.py"
-
-[workflows.workflow.metadata]
-outputType = "console"
+args = "./start_tarnet.sh"
+waitForPort = 5000
 
 [[ports]]
 localPort = 5000
